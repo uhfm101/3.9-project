@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <link rel = "stylesheet" href = "style.css">
+</head>
+<body>
+
+<div class =  "center">
+<div class =  "container">
+    <div class =  "content">
+
+        <div class  = "center">
+        <div class = "row">
+        <div>
+            <input type = "text" id = "v1">
+        </div>
+
+        <div>
+            <input type = "text" id = "v2">
+        </div>
+        </div>
+        </div>
+
+        <button name = "+">+</button>
+        <button name = "-">-</button>
+        <button name = "*">*</button>
+        <button name = "/">/</button>
+        <button name = "%">%</button>
+        <button name =  "clear">Clear</button>
+
+        <p></p>
+    </div>
+</div>
+</div>
+
+<script>
+    const content = document.querySelector(".content");
+    const ans = document.querySelector("p")
+
+    const v1 = document.getElementById("v1");
+    const v2 =  document.getElementById("v2");
+
+    const clear  = document.getElementById("clear");
+
+    const add = document.querySelector('[name = "+"]')
+    add.addEventListener("click", function(e){
+        let add1 = +v1.value;
+        let add2 = +v2.value;
+        let sum = add1+add2;
+        const c = document.createElement("p");
+        c.innerHTML = `${add1} + ${add2} = ${sum}`;
+        content.appendChild(c);
+        if (!onlyNum(add1) || !onlyNum(add2)){
+            c.innerHTML = "Invalid inputs";
+            content.appendChild(c);
+            return;
+        }
+        v1.value = "";
+        v2.value = "";
+    });
+
+    const subtract = document.querySelector('[name = "-"]')
+    subtract.addEventListener("click", function(e){
+        let sub1 = +v1.value;
+        let sub2 = +v2.value;
+        let diff = sub1-sub2;
+        const c = document.createElement("p");
+        c.innerHTML = `${sub1} - ${sub2} = ${diff}`;
+        content.appendChild(c);
+        if (!onlyNum(sub1) || !onlyNum(sub2)){
+            c.innerHTML = "Invalid inputs";
+            content.appendChild(c);
+            return;
+        }
+        v1.value = "";
+        v2.value = "";
+    });
+
+    const multiply = document.querySelector('[name = "*"]')
+    multiply.addEventListener("click", function(e){
+        let mul1 = +v1.value;
+        let mul2 = +v2.value;
+        let factor = mul1*mul2;
+        const c = document.createElement("p");
+        c.innerHTML = `${mul1} x ${mul2} = ${factor}`;
+        content.appendChild(c);
+        if (!onlyNum(mul1) || !onlyNum(mul2)){
+            c.innerHTML = "Invalid inputs";
+            content.appendChild(c);
+            return;
+        }
+        v1.value = "";
+        v2.value = "";
+    });
+
+    const divide = document.querySelector('[name = "/"]')
+    divide.addEventListener("click", function(e){
+        let div1 = +v1.value;
+        let div2 = +v2.value;
+        let quotient = (div1/div2).toFixed(2);
+        const c = document.createElement("p");
+        c.innerHTML = `${div1} / ${div2} = ${quotient}`;
+        content.appendChild(c);
+        if (!onlyNum(div1) || !onlyNum(div2)){
+            c.innerHTML = "Invalid inputs";
+            content.appendChild(c);
+            return;
+        }
+        v1.value = "";
+        v2.value = "";
+    });
+
+
+    const remainder = document.querySelector('[name = "%"]')
+    remainder.addEventListener("click", function(e){
+        let re1 = +v1.value;
+        let re2 = +v2.value;
+        let rem = re1%re2;
+        const c = document.createElement("p");
+        c.innerHTML = `${re1} % ${re2} = ${rem}`;
+        content.appendChild(c);
+        if (!onlyNum(re1) || !onlyNum(re2)){
+            c.innerHTML = "Invalid inputs";
+            content.appendChild(c);
+            return;
+        }
+        v1.value = "";
+        v2.value = "";
+    });
+
+    function onlyNum(num){
+        if (isNaN(num)){
+            return false;
+        }
+        return true;
+    }
+
+    clear.addEventListener("click", function(e){
+        ans.classList.remove = ("hidden");
+    })
+</script>
+</body>
+</html>
