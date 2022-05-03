@@ -28,6 +28,7 @@
         <button name = "*">*</button>
         <button name = "/">/</button>
         <button name = "%">%</button>
+        <button name = "^">^</button>
         <button name =  "clear">Clear</button>
 
         <p></p>
@@ -43,6 +44,11 @@
     const v2 =  document.getElementById("v2");
 
     const clear  = document.getElementById("clear");
+    clear.addEventListener("click", function(e){
+        p.classList.remove = ("");
+        v1.value = "";
+        v2.value = "";
+    })
 
     const add = document.querySelector('[name = "+"]')
     add.addEventListener("click", function(e){
@@ -55,6 +61,8 @@
         if (!onlyNum(add1) || !onlyNum(add2)){
             c.innerHTML = "Invalid inputs";
             content.appendChild(c);
+            v1.value = "";
+            v2.value = "";
             return;
         }
         v1.value = "";
@@ -72,6 +80,8 @@
         if (!onlyNum(sub1) || !onlyNum(sub2)){
             c.innerHTML = "Invalid inputs";
             content.appendChild(c);
+            v1.value = "";
+            v2.value = "";
             return;
         }
         v1.value = "";
@@ -89,6 +99,8 @@
         if (!onlyNum(mul1) || !onlyNum(mul2)){
             c.innerHTML = "Invalid inputs";
             content.appendChild(c);
+            v1.value = "";
+            v2.value = "";
             return;
         }
         v1.value = "";
@@ -106,6 +118,8 @@
         if (!onlyNum(div1) || !onlyNum(div2)){
             c.innerHTML = "Invalid inputs";
             content.appendChild(c);
+            v1.value = "";
+            v2.value = "";
             return;
         }
         v1.value = "";
@@ -124,6 +138,27 @@
         if (!onlyNum(re1) || !onlyNum(re2)){
             c.innerHTML = "Invalid inputs";
             content.appendChild(c);
+            v1.value = "";
+            v2.value = "";
+            return;
+        }
+        v1.value = "";
+        v2.value = "";
+    });
+
+    const exponent = document.querySelector('[name = "^"]')
+    exponent.addEventListener("click", function(e){
+        let ex1 = +v1.value;
+        let ex2 = +v2.value;
+        let fac = ex1**ex2;
+        const c = document.createElement("p");
+        c.innerHTML = `${ex1} % ${ex2} = ${fac}`;
+        content.appendChild(c);
+        if (!onlyNum(ex1) || !onlyNum(ex2)){
+            c.innerHTML = "Invalid inputs";
+            content.appendChild(c);
+            v1.value = "";
+            v2.value = "";
             return;
         }
         v1.value = "";
@@ -137,9 +172,7 @@
         return true;
     }
 
-    clear.addEventListener("click", function(e){
-        ans.classList.remove = ("hidden");
-    })
+
 </script>
 </body>
 </html>
